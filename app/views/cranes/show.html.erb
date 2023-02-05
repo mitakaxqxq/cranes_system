@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @crane %>
+
+<div>
+  <%= link_to "Edit this crane", edit_crane_path(@crane) %> |
+  <%= link_to "Back to cranes", cranes_path %>
+
+  <%= button_to "Destroy this crane", @crane, method: :delete %>
+</div>

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <div class="container-fluid">
+  	<%= link_to 'Начало', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <%= link_to 'Документация', home_about_path, class:"nav-link" %>
+        </li>
+        <% if Current.user %>
+          <li class="nav-item">
+              <%= link_to 'Кранове', cranes_path, class:"nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div>
+          <% if Current.user %>
+            <span class="navbar-brand">Влезли сте като <%= Current.user.email %> с номер на фирмата <%= Current.user.company_number %></span>
+            <%= button_to 'Изход', logout_path, method: :delete, class: 'btn btn-primary' %>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to 'Вход', sign_in_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Регистрация', sign_up_path, class: "nav-link" %> 
+          </li>
+          <% end %>
+        </div>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>

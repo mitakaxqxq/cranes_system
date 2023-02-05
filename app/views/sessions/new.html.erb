@@ -1,0 +1,18 @@
+<h1>Вход</h1>
+
+<% unless flash[:alert].nil? %>
+	<div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+<% end %>
+<%= form_with url: sign_in_path do |form| %>
+	<div class='mb-3'>
+		<%= form.label 'Имейл' %>
+		<%= form.text_field :email, class: 'form-control', placeholder: 'ivan.ivanov@gmail.com'%>
+	</div>
+	<div class='mb-3'>
+		<%= form.label 'Парола' %>
+		<%= form.password_field :password, class: 'form-control', placeholder: 'парола' %>
+	</div>
+	<div class='mb-3'>
+		<%= form.submit 'Вход', class: 'btn btn-primary' %>
+	</div>
+<% end %> 
