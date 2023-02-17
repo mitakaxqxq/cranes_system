@@ -5,8 +5,8 @@
 # password: string virtual
 
 class User < ApplicationRecord
-	has_secure_password
+    has_secure_password
 
-	validates :email, presence: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'Имейлът е неправилен, въведете отново!' }
-	validates :company_number, presence: true
+    validates :email, presence: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'Имейлът е неправилен, въведете отново!' }
+    validates :company_number, presence: true
 end
