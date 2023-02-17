@@ -13,13 +13,20 @@
           <li class="nav-item">
               <%= link_to 'Кранове', cranes_path, class:"nav-link" %>
           </li>
+          <li class="nav-item">
+              <%= link_to 'Напиши имейл', compose_path, class:"nav-link" %>
+          </li>
         <% end %>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <div>
           <% if Current.user %>
-            <span class="navbar-brand">Влезли сте като <%= Current.user.email %> с номер на фирмата <%= Current.user.company_number %></span>
-            <%= button_to 'Изход', logout_path, method: :delete, class: 'btn btn-primary' %>
+            <li class="nav-item">
+              <%= link_to Current.user.email, edit_password_path, class: 'nav-link'%>
+            </li>
+            <li class="nav-item">
+              <%= button_to 'Изход', logout_path, method: :delete, class: 'btn btn-outline-secondary' %>
+            </li>
           <% else %>
           <li class="nav-item">
             <%= link_to 'Вход', sign_in_path, class: "nav-link" %>
@@ -30,9 +37,6 @@
           <% end %>
         </div>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      </form>
     </div>
   </div>
 </nav>
