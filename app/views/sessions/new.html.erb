@@ -1,5 +1,8 @@
 <h1>Вход</h1>
 
+<% unless flash[:notice].nil? %>
+	<div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <% unless flash[:alert].nil? %>
 	<div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
 <% end %>
@@ -11,6 +14,7 @@
 	<div class='mb-3'>
 		<%= form.label 'Парола' %>
 		<%= form.password_field :password, class: 'form-control', placeholder: 'парола' %>
+		<%= link_to 'Забравена парола?', password_reset_path %>
 	</div>
 	<div class='mb-3'>
 		<%= form.submit 'Вход', class: 'btn btn-primary' %>

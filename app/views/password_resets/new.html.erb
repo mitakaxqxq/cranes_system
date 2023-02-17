@@ -1,0 +1,14 @@
+<h1>Забравена парола?</h1>
+
+<% unless flash[:alert].nil? %>
+	<div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+<% end %>
+<%= form_with url: password_reset_path do |form| %>
+	<div class='mb-3'>
+		<%= form.label 'Имейл' %>
+		<%= form.text_field :email, class: 'form-control', placeholder: 'ivan.ivanov@gmail.com'%>
+	</div>
+	<div class='mb-3'>
+		<%= form.submit 'Изпратете имейл', class: 'btn btn-primary' %>
+	</div>
+<% end %>
