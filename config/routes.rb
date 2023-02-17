@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
 
+  get 'compose', to: 'composes#new'
+  post 'compose', to: 'composes#create'
+
   get 'home/about'
   resources :cranes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
