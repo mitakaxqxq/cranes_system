@@ -10,12 +10,27 @@
             <%= link_to 'Документация', home_about_path, class:"nav-link" %>
         </li>
         <% if Current.user %>
-          <li class="nav-item">
-              <%= link_to 'Кранове', cranes_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-              <%= link_to 'Напиши имейл', compose_path, class:"nav-link" %>
-          </li>
+          <% if User.find_by(email: Current.user[:email]) %>
+            <li class="nav-item">
+                <%= link_to 'Повдигателни съоръжения', cranes_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Ползватели', companies_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Напиши имейл', compose_path, class:"nav-link" %>
+            </li>
+          <% elsif Company.find_by(email: Current.user[:email]) %>
+            <li class="nav-item">
+                <%= link_to 'Напиши имейл', compose_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Органи за надзор', company_check_contractors_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Информация за възложителя', company_path(Current.user), class:"nav-link" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
