@@ -1,0 +1,30 @@
+<h1>Регистрирайте се</h1>
+<%= form_with model: @user, url: user_sign_up_path do |form| %>
+    <% if form.object.errors.any? %>
+        <div class='alert alert-danger'>
+            <% form.object.errors.full_messages.each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+    <% end %>
+    <div class='mb-3'>
+        <%= form.label 'Имейл' %>
+        <%= form.text_field :email, class: 'form-control', placeholder: 'ivan.ivanov@gmail.com'%>
+    </div>
+    <div class='mb-3'>
+        <%= form.label 'Парола' %>
+        <%= form.password_field :password, class: 'form-control', placeholder: 'парола' %>
+    </div>  
+    <div class='mb-3'>
+        <%= form.label 'Потвърдете паролата' %>
+        <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'парола' %>
+    </div>
+    <div class='mb-3'>
+        <%= form.label 'Уникален идентификационен номер на фирмата' %>
+        <%= form.text_field :company_number, class: 'form-control', placeholder: '123' %>
+    </div>
+    <div class='mb-3'>
+        <%= form.submit 'Създай потребител', class: 'btn btn-primary' %>
+    </div>
+
+<% end %>

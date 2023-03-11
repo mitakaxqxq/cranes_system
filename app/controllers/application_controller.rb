@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
 
     def set_current_user
         if session[:user_id]
-          Current.user = User.find_by(id: session[:user_id])
+            Current.user = User.find_by(id: session[:user_id])
+        elsif session[:company_id]
+            Current.user = Company.find_by(id: session[:company_id])
         end
     end
 

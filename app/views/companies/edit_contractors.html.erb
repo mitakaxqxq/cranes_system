@@ -1,0 +1,22 @@
+<h1>Добавяне на орган за технически надзор за <%= Current.user.name %></h1>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
+<%= form_with url: company_check_contractors_path, method: :post do |form| %>
+  <div class='mb-3'>
+    <%= form.label :contractor_number, "Уникален номер на органа за технически надзор:" %>
+    <%= form.text_field :contractor_number, id: :company_contractor_number %>
+  </div>
+
+  <%= form.submit "Добави" %>
+<% end %>
+
+<br>
+
+<%= link_to "Обратно", company_check_contractors_path(Current.user) %>

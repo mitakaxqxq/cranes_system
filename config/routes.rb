@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
+  resources :companies
+  resources :cranes
+  
   root 'home#index'
 
   get 'password', to: 'passwords#edit', as: :edit_password
   patch 'password', to: 'passwords#update'
   
   get 'sign_up', to: 'registrations#new'
-  post 'sign_up', to: 'registrations#create'
+
+  get 'user_sign_up', to: 'registrations#new_user'
+  post 'user_sign_up', to: 'registrations#create_user'
+
+  get 'company_sign_up', to: 'registrations#new_company'
+  post 'company_sign_up', to: 'registrations#create_company'
+
+  get 'company_check_contractors', to: 'companies#view_contractors'
+  post 'company_check_contractors', to: 'companies#add_contractors'
+  get 'edit_contractors', to: 'companies#edit_contractors'
+  delete 'destroy_contractors', to: 'companies#destroy_contractor'
 
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create'
@@ -21,7 +34,6 @@ Rails.application.routes.draw do
   post 'compose', to: 'composes#create'
 
   get 'home/about'
-  resources :cranes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
