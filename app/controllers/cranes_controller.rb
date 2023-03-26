@@ -66,6 +66,24 @@ class CranesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def crane_params
-      params.require(:crane).permit(:status, :registration_date, :serial_number)
+      params.require(:crane).permit(
+        :status, 
+        :crane_type, 
+        :load_capacity,
+        :year_of_manufacture,
+        :application_number,
+        :application_date,
+        :registration_date,
+        :last_check_date,
+        :next_check_date,
+        :suspension_date,
+        :scrap_date,
+        :user,
+        :user_address,
+        :manufacturer,
+        :location,
+        :serial_number,
+        :registration_number,
+        :notes)
     end
 end

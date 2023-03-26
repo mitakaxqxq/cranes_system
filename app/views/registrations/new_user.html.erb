@@ -8,6 +8,10 @@
         </div>
     <% end %>
     <div class='mb-3'>
+        <%= form.label 'Име' %>
+        <%= form.text_field :name, class: 'form-control', placeholder: 'Име'%>
+    </div>
+    <div class='mb-3'>
         <%= form.label 'Имейл' %>
         <%= form.text_field :email, class: 'form-control', placeholder: 'ivan.ivanov@gmail.com'%>
     </div>
