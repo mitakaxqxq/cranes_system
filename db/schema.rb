@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_195859) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_19_210000) do
   create_table "companies", force: :cascade do |t|
     t.string "email", null: false
     t.string "name"
@@ -28,6 +28,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_195859) do
     t.string "serial_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "load_capacity"
+    t.integer "year_of_manufacture"
+    t.integer "application_number"
+    t.date "application_date"
+    t.date "last_check_date"
+    t.date "next_check_date"
+    t.date "suspension_date"
+    t.date "scrap_date"
+    t.string "crane_type"
+    t.string "user"
+    t.string "user_address"
+    t.string "manufacturer"
+    t.string "location"
+    t.string "registration_number"
+    t.text "notes"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_195859) do
     t.integer "company_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
 end
