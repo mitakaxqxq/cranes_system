@@ -25,6 +25,11 @@ $(document).ready(function() {
     $locationField, $serialNumberField, $registrationNumberField, $notesField
   ];
 
+  if($statusField.val() == "Бракуван")
+  {
+    disableFields(formFields);  
+  }
+
   $statusField.on('change', function() {
     var dateString = new Date().toISOString().slice(0, 10);
     console.log(dateString)

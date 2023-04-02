@@ -1,22 +1,92 @@
 <div id="<%= dom_id crane %>">
   <p>
-    <strong>Status:</strong>
+    <strong>Статус:</strong>
     <%= crane.status %>
   </p>
 
   <p>
-    <strong>Registration date:</strong>
+    <strong>Тип:</strong>
+    <%= crane.crane_type %>
+  </p>
+
+  <p>
+    <strong>Товароподемност:</strong>
+    <%= crane.load_capacity %>
+  </p>
+
+  <p>
+    <strong>Година на производство:</strong>
+    <%= crane.year_of_manufacture %>
+  </p>
+
+  <p>
+    <strong>Номер на заявление:</strong>
+    <%= crane.application_number %>
+  </p>
+
+  <p>
+    <strong>Дата на заявление:</strong>
+    <%= crane.application_date %>
+  </p>
+
+  <p>
+    <strong>Дата на регистрация:</strong>
     <%= crane.registration_date %>
   </p>
 
   <p>
-    <strong>Serial number:</strong>
+    <strong>Дата на последна проверка:</strong>
+    <%= crane.last_check_date %>
+  </p>
+
+  <p>
+    <strong>Дата на следваща проверка:</strong>
+    <%= crane.next_check_date %>
+  </p>
+
+  <p>
+    <strong>Дата на спиране:</strong>
+    <%= crane.suspension_date %>
+  </p>
+
+  <p>
+    <strong>Дата на бракуване:</strong>
+    <%= crane.scrap_date %>
+  </p>
+
+  <p>
+    <strong>Ползвател:</strong>
+    <%= crane.user %>
+  </p>
+
+  <p>
+    <strong>Адрес на ползвателя:</strong>
+    <%= crane.user_address %>
+  </p>
+
+  <p>
+    <strong>Производител:</strong>
+    <%= crane.manufacturer %>
+  </p>
+
+  <p>
+    <strong>Местонахождение:</strong>
+    <%= crane.location %>
+  </p>
+
+  <p>
+    <strong>Заводски номер:</strong>
     <%= crane.serial_number %>
   </p>
 
   <p>
-    <strong>Crane Type:</strong>
-    <%= crane.crane_type %>
+    <strong>Регистрационен номер на крана:</strong>
+    <%= crane.registration_number %>
+  </p>
+
+  <p>
+    <strong>Забележки:</strong>
+    <%= simple_format(crane.notes) %>
   </p>
 
 </div>

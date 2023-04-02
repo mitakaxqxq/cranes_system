@@ -2,6 +2,14 @@
 <%= javascript_include_tag 'helper_functions' %>
 <%= stylesheet_link_tag 'application' %>
 
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
 <%= form_with(id: 'crane_form', model: crane) do |form| %>
   <% if crane.errors.any? %>
     <div style="color: red">
@@ -17,17 +25,17 @@
 
   <div>
     <%= form.label "Статус", style: "display: block" %>
-    <%= form.select :status, options_for_select(["Регистриран", "В експлоатация", "Спрян от експлоатация", "Бракуван"]), { class: 'form-control' }, id: 'status', value: form.object.status %>
+    <%= form.select :status, options_for_select(["Регистриран", "В експлоатация", "Спрян от експлоатация", "Бракуван"], form.object.status), { class: 'form-control' }, id: 'status'  %>
   </div>
 
   <div>
     <%= form.label "Тип", style: "display: block" %>
-    <%= form.select :crane_type, options_for_select(["Бордови кран", "Кран с ръчно задвижване", "Кран мостов", "Кран козлови", "Товароподемна количка", "Електрически телфер", "Товарозахващащо приспособление", "Подвижна работна площадка", "Подемник", "Окачен кош"]), { class: 'form-control' }, id: 'type' %>
+    <%= form.select :crane_type, options_for_select(["Бордови кран", "Кран с ръчно задвижване", "Кран мостов", "Кран козлови", "Товароподемна количка", "Електрически телфер", "Товарозахващащо приспособление", "Подвижна работна площадка", "Подемник", "Окачен кош"], form.object.crane_type), { class: 'form-control' }, id: 'type' %>
   </div>
 
   <div>
     <%= form.label "Товароподемност", style: "display: block" %>
-    <%= form.number_field :load_capacity, no_spinner: false, id: 'load_capacity', value: form.object.load_capacity %>
+    <%= form.number_field :load_capacity, no_spinner: false, id: 'load_capacity', step: :any %>
   </div>
 
   <div>
@@ -97,7 +105,11 @@
 
   <div>
     <%= form.label "Регистрационен номер на крана", style: "display: block" %>
-    <%= form.text_field :registration_number, value: Current.user[:company_number].to_s + 'ПС', id: 'registration_number'%>
+    <% if crane.new_record? %>
+      <%= form.text_field :registration_number, value: Current.user[:company_number].to_s + 'ПС', id: 'registration_number'%>
+    <% else %>
+      <%= form.text_field :registration_number, id: 'registration_number'%>
+    <% end %>
   </div>
 
   <div>
@@ -105,7 +117,13 @@
     <%= form.text_area :notes, size: "70x5", id: 'notes' %>
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <% if crane.new_record? %>
+    <div>
+      <%= form.submit 'Създай' %>
+    </div>
+  <% else %>
+    <div>
+      <%= form.submit 'Промяна' %>
+    </div>
+  <% end %>
 <% end %>
