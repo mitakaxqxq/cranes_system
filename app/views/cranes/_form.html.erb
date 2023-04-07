@@ -108,7 +108,7 @@
     <% if crane.new_record? %>
       <%= form.text_field :registration_number, value: Current.user[:company_number].to_s + 'ПС', id: 'registration_number'%>
     <% else %>
-      <%= form.text_field :registration_number, id: 'registration_number'%>
+      <%= form.text_field :registration_number, id: 'registration_number', disabled: true%>
     <% end %>
   </div>
 
