@@ -4,7 +4,7 @@ class CranesController < ApplicationController
 
   # GET /cranes or /cranes.json
   def index
-    @cranes = Crane.where("registration_number LIKE ?", "#{Current.user[:company_number]}%")
+    @cranes = Crane.where("registration_number LIKE :prefix", prefix: "#{Current.user[:company_number]}%")
   end
 
   # GET /cranes/1 or /cranes/1.json
