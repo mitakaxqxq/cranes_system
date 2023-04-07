@@ -22,8 +22,11 @@ class CompaniesController < ApplicationController
   end
 
   def view_contractors
-    # Display the contractors for the current company
-    @contractors = Current.user[:contractors]
+  end
+
+  def view_contractor_cranes
+    @user = User.find_by(company_number: params[:contractor_number])
+    @cranes = Crane.where("registration_number LIKE ?", "#{params[:contractor_number]}%")
   end
 
   def edit_contractors
@@ -43,7 +46,6 @@ class CompaniesController < ApplicationController
 
 
   def update_contractors
-    # Update the contractors for the current company
     if @company.save
       redirect_to company_check_contractors_path, notice: 'Contractors updated successfully!'
     else
@@ -62,7 +64,6 @@ class CompaniesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(Current.user[:id])
     end

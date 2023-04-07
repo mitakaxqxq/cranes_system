@@ -26,6 +26,7 @@
             <td><%= contractor[:name] %></td>
             <td><%= contractor[:email] %></td>
             <td><%= contractor[:company_number] %></td>
+            <td><%= link_to "Покажи съоръжения", company_check_contractor_cranes_path(:contractor_number => contractor_number) %></td>
             <td><%= button_to "Премахване", destroy_contractors_path(contractor_number: contractor_number), method: :delete, data: { confirm: "Сигурни ли сте, че искате да премахнете #{contractor[:name]} от вашите органи за технически надзор?" } %></td>
         </tr>
       <% end %>
