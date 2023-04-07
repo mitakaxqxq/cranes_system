@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'company_check_contractors', to: 'companies#add_contractors'
   get 'edit_contractors', to: 'companies#edit_contractors'
   delete 'destroy_contractors', to: 'companies#destroy_contractor'
+  get 'company_check_contractor_cranes', to: 'companies#view_contractor_cranes'
 
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create'
