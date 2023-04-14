@@ -48,13 +48,9 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.smtp_settings = {
-   :address => "smtp.gmail.com",
-   :port => 587,
-   :user_name => 'zaedinden1@gmail.com',
-   :password => 'dzhllmhmpblvajwu',
-   :authentication => 'plain'
-  }
+  smtp_settings = YAML.load_file(Rails.root.join("config", "smtp_settings.yaml"))
+
+  config.action_mailer.smtp_settings = smtp_settings[<email_goes_here>].deep_symbolize_keys!
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
