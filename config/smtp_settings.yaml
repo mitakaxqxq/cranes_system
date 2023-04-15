@@ -1,8 +1,0 @@
-testotn1@gmail.com:
-  address: 'smtp.gmail.com'
-  port: 587
-  user_name: 'testotn1@gmail.com'
-  password: 'xqvsdvdxhuorccfp'
-  authentication: 'plain'
-  enable_starttls_auto: true
-  openssl_verify_mode: 'none'
