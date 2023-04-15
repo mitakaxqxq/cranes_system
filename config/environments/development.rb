@@ -52,6 +52,10 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = smtp_settings[<email_goes_here>].deep_symbolize_keys!
 
+  # needed for months:
+  config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml,yaml}').to_s]
+  config.i18n.default_locale = :bg
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

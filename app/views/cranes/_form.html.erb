@@ -65,7 +65,7 @@
 
   <div>
     <%= form.label "Дата на следваща проверка", style: "display: block" %>
-    <%= form.date_field :next_check_date, id: 'next_check_date', disabled: true %>
+    <%= form.date_field :next_check_date, id: 'next_check_date', readonly: true %>
   </div>
 
   <div>
@@ -108,7 +108,7 @@
     <% if crane.new_record? %>
       <%= form.text_field :registration_number, value: Current.user[:company_number].to_s + 'ПС', id: 'registration_number'%>
     <% else %>
-      <%= form.text_field :registration_number, id: 'registration_number', disabled: true%>
+      <%= form.text_field :registration_number, id: 'registration_number', disabled: true %>
     <% end %>
   </div>
 

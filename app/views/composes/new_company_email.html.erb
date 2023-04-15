@@ -3,10 +3,21 @@
 <% unless flash[:alert].nil? %>
     <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
 <% end %>
-<%= form_with url: compose_path do |form| %>
+
+</br>
+
+<%= form_with url: compose_company_path do |form| %>
     <div class='mb-3'>
         <%= form.label 'Въведете мейл' %>
         <%= form.text_field :email, class: 'form-control', placeholder: 'ivan.ivanov@gmail.com'%>
+    </div>
+    <div class='mb-3'>
+      <%= form.label 'Тема' %>
+      <%= form.text_field :subject, class: 'form-control' %>
+    </div>
+    <div class='mb-3'>
+      <%= form.label 'Съдържание' %>
+      <%= form.text_area :message, class: 'form-control' %>
     </div>
     <div class='mb-3'>
         <%= form.submit 'Изпратете имейл', class: 'btn btn-primary' %>

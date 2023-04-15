@@ -31,8 +31,10 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
 
-  get 'compose', to: 'composes#new'
-  post 'compose', to: 'composes#create'
+  get 'compose_user', to: 'composes#new_user_email'
+  post 'compose_user', to: 'composes#create_user_email'
+  get 'compose_company', to: 'composes#new_company_email'
+  post 'compose_company', to: 'composes#create_company_email'
 
   get 'home/about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

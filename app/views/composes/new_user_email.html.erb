@@ -1,0 +1,58 @@
+<h1>Напишете имейл</h1>
+
+<% unless flash[:alert].nil? %>
+    <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+<% end %>
+
+</br>
+<div>
+    Това са крановете с предстояща проверка за орган за технически надзор <%= Current.user[:name] %>
+</div>
+</br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Статус</th>
+      <th>Регистрационен номер</th>
+      <th>Дата на последна проверка</th>
+      <th>Дата на следваща проверка</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cranes_for_check.each do |crane| %>
+      <tr>
+        <td><%= crane.status %></td>
+        <td><%= crane.registration_number %></td>
+        <td><%= crane.last_check_date %></td>
+        <td><%= crane.next_check_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+
+<div>
+  Това е съобщението, което ще бъде изпратено:
+</div>
+
+</br>
+
+<div>
+  <%= simple_format(@message) %>
+</div>
+
+</br>
+
+<%= form_with url: compose_user_path do |form| %>
+    <div class='mb-3'>
+        <%= form.label 'Въведете мейл' %>
+        <%= form.text_field :email, class: 'form-control', placeholder: 'ivan.ivanov@gmail.com'%>
+    </div>
+    <div class='mb-3'>
+        <%= form.submit 'Изпратете имейл', class: 'btn btn-primary' %>
+    </div>
+<% end %>
