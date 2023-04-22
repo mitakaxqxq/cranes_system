@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Ползватели на СПО, с които имате действащ договор</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Име</th>
+      <th>ЕИК</th>
+      <th>Адрес</th>
+      <th>Електронна поща</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Current.user.company_contractors.each do |company_contractor| %>
+      <tr>
+        <td><%= company_contractor.company.name %></td>
+        <td><%= company_contractor.company.uic %></td>
+        <td><%= company_contractor.company.address %></td>
+        <td><%= company_contractor.company.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
