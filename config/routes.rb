@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'compose_company', to: 'composes#new_company_email'
   post 'compose_company', to: 'composes#create_company_email'
 
+  get 'my_companies', to: 'company_contractors#index'
+
   get 'home/about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

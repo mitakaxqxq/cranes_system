@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_19_210000) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_22_104001) do
   create_table "companies", force: :cascade do |t|
     t.string "email", null: false
     t.string "name"
     t.string "password_digest"
     t.integer "uic"
     t.string "address"
-    t.text "contractors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "company_contractors", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_contractors_on_company_id"
+    t.index ["user_id"], name: "index_company_contractors_on_user_id"
   end
 
   create_table "cranes", force: :cascade do |t|
@@ -54,4 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_19_210000) do
     t.string "name"
   end
 
+  add_foreign_key "company_contractors", "companies"
+  add_foreign_key "company_contractors", "users"
 end

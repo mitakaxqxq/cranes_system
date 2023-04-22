@@ -1,24 +1,27 @@
 class CompaniesController < ApplicationController
   before_action :require_user_logged_in!
+  before_action :set_contractors
   before_action :set_company, only: %i[ show ]
-
-  # GET /companies/1 or /companies/1.json
-  def show
-  end
 
   def add_contractors
     contractor_id = params[:contractor_number]
-    if User.find_by(company_number: contractor_id)
-      if Current.user[:contractors].include?(contractor_id)
-        redirect_to edit_contractors_path, alert: "Органът за технически надзор вече работи за Вас."
-      else
-        Current.user[:contractors] << contractor_id
-        redirect_to edit_contractors_path, notice: "Органът за технически надзор е добавен успешно."
+    user = User.find_by(company_number: contractor_id)
+
+    if user.present?
+      company_contractor = CompanyContractor.find_by(company_id: Current.user.id, user_id: user.id)
+      if company_contractor
+        redirect_to company_check_contractors_path, alert: "Органът за технически надзор вече работи за Вас."
+        return
+      end
+
+      company_contractor = CompanyContractor.create(company_id: Current.user.id, user_id: user.id)
+
+      if company_contractor.persisted?
+        redirect_to company_check_contractors_path, notice: "Органът за технически надзор е добавен успешно."
       end
     else
-      redirect_to edit_contractors_path, alert: "Органът за технически надзор не съществува!"
+      redirect_to company_check_contractors_path, alert: "Органът за технически надзор не съществува!"
     end
-    Current.user.save
   end
 
   def view_contractors
@@ -30,33 +33,12 @@ class CompaniesController < ApplicationController
   end
 
   def edit_contractors
-    @contractor_number = params[:contractor_number]
-
-    if @contractor_number.present?
-      if Current.user.contractors.include?(@contractor_number)
-        flash[:notice] = "Органът за технически надзор вече е добавен."
-      else
-        Current.user.contractors << @contractor_number
-        flash[:notice] = "Органът за технически надзор е добавен успешно."
-      end
-
-      redirect_to company_check_contractors_path
-    end
-  end
-
-
-  def update_contractors
-    if @company.save
-      redirect_to company_check_contractors_path, notice: 'Contractors updated successfully!'
-    else
-      render :edit_contractors
-    end
   end
 
   def destroy_contractor
-    contractor_number = params[:contractor_number]
-    if Current.user[:contractors].delete(contractor_number)
-      Current.user.save
+    user = User.find_by(id: params[:contractor_id])
+    company_contractor = Current.user.company_contractors.find_by(user_id: user.id)
+    if company_contractor.destroy
       redirect_to company_check_contractors_path, notice: "Органът за технически надзор е премахнат успешно."
     else
       redirect_to company_check_contractors_path, alert: "Органът за технически надзор не може да се премахне."
@@ -67,4 +49,9 @@ class CompaniesController < ApplicationController
     def set_company
       @company = Company.find(Current.user[:id])
     end
+
+    def set_contractors
+      @contractors = Current.user.company_contractors.map(&:user)
+    end
+
 end
