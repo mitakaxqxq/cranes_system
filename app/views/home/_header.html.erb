@@ -20,12 +20,18 @@
             <li class="nav-item">
                 <%= link_to 'Напиши имейл', compose_user_path, class:"nav-link" %>
             </li>
+            <li class="nav-item">
+                <%= link_to 'Настройка на SMTP', edit_smtp_setting_path(Current.user), class:"nav-link" %>
+            </li>
           <% elsif session[:company_id] %>
             <li class="nav-item">
                 <%= link_to 'Напиши имейл', compose_company_path, class:"nav-link" %>
             </li>
             <li class="nav-item">
                 <%= link_to 'Органи за надзор', company_check_contractors_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Настройка на SMTP', edit_smtp_setting_path(Current.user), class:"nav-link" %>
             </li>
             <li class="nav-item">
                 <%= link_to 'Информация за възложителя', company_path(Current.user), class:"nav-link" %>

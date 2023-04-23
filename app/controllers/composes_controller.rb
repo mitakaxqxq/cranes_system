@@ -10,7 +10,7 @@ class ComposesController < ApplicationController
             ComposeMailer.compose_user(email: params[:email], message: @message).deliver_now
             redirect_to root_path, :flash => { :notice => 'Имейлът е изпратен успешно.' }
         rescue => e
-            redirect_to root_path, :flash => { :alert => 'Имейлът за изпращане не е конфигуриран правилно! Моля, оправете настройките и презаредете сървъра.' }
+            redirect_to root_path, :flash => { :alert => 'SMTP конфигурациите са грешни! Моля, актуализирайте ги и опитайте отново' }
         end
     end
 
@@ -26,7 +26,7 @@ class ComposesController < ApplicationController
             ).deliver_now
             redirect_to root_path, :flash => { :notice => 'Имейлът е изпратен успешно.' }
         rescue => e
-            redirect_to root_path, :flash => { :alert => 'Имейлът за изпращане не е конфигуриран правилно! Моля, оправете настройките и презаредете сървъра.' }
+            redirect_to root_path, :flash => { :alert => 'SMTP конфигурациите са грешни! Моля, актуализирайте ги и опитайте отново' }
         end
     end
 

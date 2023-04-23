@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :companies
   resources :cranes
+  resources :smtp_settings, only: [:edit, :update]
   
   root 'home#index'
 
