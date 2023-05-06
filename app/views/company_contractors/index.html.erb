@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% Current.user.company_contractors.each do |company_contractor| %>
+    <% @company_contractors.each do |company_contractor| %>
       <tr>
         <td><%= company_contractor.company.name %></td>
         <td><%= company_contractor.company.uic %></td>

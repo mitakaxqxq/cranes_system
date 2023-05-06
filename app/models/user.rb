@@ -6,6 +6,7 @@
 
 class User < ApplicationRecord
     has_secure_password
+    has_one :smtp_settings, dependent: :destroy, class_name: "SmtpSetting"
     has_many :company_contractors
     has_many :company_users, through: :company_contractors, source: :company
 
