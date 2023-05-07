@@ -73,3 +73,6 @@ end
 
 #debugger
 gem 'pry', '~> 0.14.1'
+
+#for logging
+gem 'useragent'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_07_101000) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_07_101001) do
   create_table "companies", force: :cascade do |t|
     t.string "email", null: false
     t.string "name"
@@ -54,6 +54,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_07_101000) do
     t.integer "contractor_number"
   end
 
+  create_table "loggings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "company_id"
+    t.string "action"
+    t.text "message"
+    t.string "url"
+    t.string "browser"
+    t.datetime "executed_at", null: false
+    t.index ["company_id"], name: "index_loggings_on_company_id"
+    t.index ["user_id"], name: "index_loggings_on_user_id"
+  end
+
   create_table "smtp_settings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "company_id"
@@ -81,6 +93,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_07_101000) do
 
   add_foreign_key "company_contractors", "companies"
   add_foreign_key "company_contractors", "users"
+  add_foreign_key "loggings", "companies"
+  add_foreign_key "loggings", "users"
   add_foreign_key "smtp_settings", "companies"
   add_foreign_key "smtp_settings", "users"
 end
