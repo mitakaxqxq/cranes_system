@@ -4,7 +4,7 @@ class CranesController < ApplicationController
 
   # GET /cranes or /cranes.json
   def index
-    @cranes = Crane.where("registration_number LIKE :prefix", prefix: "#{Current.user[:company_number]}%")
+    @cranes = Crane.where(contractor_number: Current.user[:company_number])
   end
 
   # GET /cranes/1 or /cranes/1.json
@@ -96,6 +96,6 @@ class CranesController < ApplicationController
         :location,
         :serial_number,
         :registration_number,
-        :notes)
+        :notes).merge(contractor_number: Current.user[:company_number])
     end
 end

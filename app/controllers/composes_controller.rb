@@ -35,10 +35,10 @@ class ComposesController < ApplicationController
     def cranes_for_check
         current_date = Date.today
         @cranes_for_check = Crane.where(
-            "registration_number LIKE :prefix 
+            "contractor_number = :number 
             AND date(:date) >= date(next_check_date, '-56 days') 
             AND date(:date) <= date(next_check_date)", 
-            prefix: "#{Current.user[:company_number]}%", date: current_date.to_s)
+            number: Current.user[:company_number], date: current_date.to_s)
     end
 
     def message_from_user
