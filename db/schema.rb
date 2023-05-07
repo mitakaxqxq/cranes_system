@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_23_150500) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_07_101000) do
   create_table "companies", force: :cascade do |t|
     t.string "email", null: false
     t.string "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_23_150500) do
     t.string "location"
     t.string "registration_number"
     t.text "notes"
+    t.integer "contractor_number"
   end
 
   create_table "smtp_settings", force: :cascade do |t|
