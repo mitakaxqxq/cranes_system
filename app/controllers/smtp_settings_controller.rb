@@ -14,14 +14,17 @@ class SmtpSettingsController < ApplicationController
             Current.user.smtp_settings.save
         end
         @smtp_settings = Current.user.smtp_settings
+        log_smtp_settings_view_opened
     end
 
     def update
         @smtp_settings = Current.user.smtp_settings || Current.user.build_smtp_settings
         if @smtp_settings.update(smtp_settings_params)
-          redirect_to root_path, notice: 'SMTP настройките бяха ъпдейтнати успешно.'
+            log_smtp_settings_successfully_changed
+            redirect_to root_path, notice: 'SMTP настройките бяха ъпдейтнати успешно.'
         else
-          render :edit
+            log_smtp_settings_change_failed
+            render :edit
         end
     end
 
@@ -31,6 +34,32 @@ class SmtpSettingsController < ApplicationController
             crypt = ActiveSupport::MessageEncryptor.new(key)
             encrypted_password = crypt.encrypt_and_sign(settings[:password])
             settings[:password] = encrypted_password
+        end
+    end
+
+    private
+
+    def log_smtp_settings_view_opened
+        if User.find_by(email: Current.user[:email])
+            log_user_action(Current.user, "SMTP settings change opened", "User #{Current.user[:name]} opened the SMTP settings change menu")
+        elsif Company.find_by(email: Current.user[:email])
+            log_company_action(Current.user, "SMTP settings change opened", "Company #{Current.user[:name]} opened the SMTP settings change menu")
+        end
+    end
+
+    def log_smtp_settings_successfully_changed
+        if User.find_by(email: Current.user[:email])
+            log_user_action(Current.user, "SMTP settings successfully changed", "User #{Current.user[:name]} successfully changed their SMTP settings")
+        elsif Company.find_by(email: Current.user[:email])
+            log_company_action(Current.user, "SMTP settings successfully changed", "Company #{Current.user[:name]} successfully changed their SMTP settings")
+        end
+    end
+
+    def log_smtp_settings_change_failed
+        if User.find_by(email: Current.user[:email])
+            log_user_action(Current.user, "SMTP settings change failed", "User #{Current.user[:name]} failed to change their SMTP settings")
+        elsif Company.find_by(email: Current.user[:email])
+            log_company_action(Current.user, "SMTP settings change failed", "Company #{Current.user[:name]} failed to change their SMTP settings")
         end
     end
 end
