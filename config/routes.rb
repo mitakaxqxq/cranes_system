@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
 
+  get 'select_company', to: 'composes#select_company_email'
   get 'compose_user', to: 'composes#new_user_email'
   post 'compose_user', to: 'composes#create_user_email'
   get 'compose_company', to: 'composes#new_company_email'
@@ -39,7 +40,8 @@ Rails.application.routes.draw do
 
   get 'my_companies', to: 'company_contractors#index'
 
-  get 'home/about'
+  get 'home/about_user', to: 'home#about_user'
+  get 'home/about_company', to: 'home#about_company'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

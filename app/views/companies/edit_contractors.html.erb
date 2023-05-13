@@ -13,10 +13,11 @@
     <%= form.label :contractor_number, "Уникален номер на органа за технически надзор:" %>
     <%= form.text_field :contractor_number, id: :company_contractor_number %>
   </div>
-
-  <%= form.submit "Добави" %>
+  <div>
+    <%= form.submit "Добави", class: "btn btn-dark" %>
+    <%= link_to "Обратно към органи за технически надзор", company_check_contractors_path(Current.user), class: "btn btn-dark" %>
+  </div>
 <% end %>
 
 <br>
 
-<%= link_to "Обратно", company_check_contractors_path(Current.user) %>

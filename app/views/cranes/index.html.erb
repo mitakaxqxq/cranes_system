@@ -1,13 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<br>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
 
 <h1>Списък с повдигателните съоръжения</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
     <tr>
+      <th>Регистрационен номер</th>
       <th>Статус</th>
-      <th>Дата на регистрация</th>
-      <th>Заводски номер</th>
+      <th>Дата на следваща проверка</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,15 +23,15 @@
   <tbody>
     <% @cranes.each do |crane| %>
       <tr>
+        <td><%= crane.registration_number %></td>
         <td><%= crane.status %></td>
-        <td><%= crane.registration_date %></td>
-        <td><%= crane.serial_number %></td>
-        <td><%= link_to 'Покажи', crane %></td> 
-        <td><%= link_to 'Промени', edit_crane_path(crane) %></td> 
-        <td><%= button_to 'Изтрий', crane, method: :delete, data: { confirm: 'Сигурни ли сте?' } %></td> 
+        <td><%= crane.next_check_date %></td>
+        <td><%= link_to 'Покажи', crane, style: 'text-decoration: none' %></td> 
+        <td><%= link_to 'Промени', edit_crane_path(crane), style: 'text-decoration: none' %></td> 
+        <td><%= button_to 'Изтрий', crane, method: :delete, data: { confirm: 'Сигурни ли сте?' }, style: 'text-decoration: none; background:none; border:none; color:#0d6efd' %></td> 
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to "Добавяне на повдигателно съоръжение", new_crane_path %>
+<%= link_to "Добавяне на повдигателно съоръжение", new_crane_path, class: "btn btn-secondary" %>

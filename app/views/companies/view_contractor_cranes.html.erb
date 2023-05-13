@@ -1,4 +1,4 @@
-<h1>Съоръжения, поддържани от орган за технически надзор <%= @user[:name] %></h1>
+<h1>Съоръжения, чийто надзор се осъществява от <%= @user[:name] %></h1>
 
 <br>
 
@@ -10,8 +10,8 @@
   <div class="alert alert-success"><%= flash[:notice] %></div>
 <% end %>
 
-<table>
-  <thead>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
     <tr>
       <th>Регистрационен номер</th>
       <th>Статус</th>
@@ -20,7 +20,6 @@
       <th>Товароподемност</th>
       <th>Местонахождение</th>
       <th>Дата на следваща проверка</th>
-      <th colspan="6"></th>
     </tr>
   </thead>
   <tbody>
@@ -31,11 +30,11 @@
           <td><%= crane.crane_type %></td>
           <td><%= crane.serial_number %></td>
           <td><%= crane.load_capacity %></td>
-          <td><%= crane.manufacturer %></td>
+          <td><%= crane.location %></td>
           <td><%= crane.next_check_date %></td>
         </tr>
       <% end %>
   </tbody>
 </table>
 
-<%= link_to "Обратно към органи за технически надзор", company_check_contractors_path %>
+<%= link_to "Обратно към органи за технически надзор", company_check_contractors_path, class: "btn btn-dark" %>

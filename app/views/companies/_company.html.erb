@@ -1,22 +1,23 @@
-<div id="<%= dom_id company %>">
-  <p>
-    <strong>Име:</strong>
-    <%= company.name %>
-  </p>
+<div id="<%= dom_id company %> " class="card">
+  <div class="card-body">
+    <p>
+      <h5 class="card-title">Име: <%= company.name %></h5>
+    </p>
 
-  <p>
-    <strong>ЕИК:</strong>
-    <%= company.uic %>
-  </p>
+    <p class="card-text">
+      <strong>ЕИК:</strong>
+      <%= company.uic %>
+    </p>
 
-  <p>
-    <strong>Имейл:</strong>
-    <%= company.email %>
-  </p>
+    <p class="card-text">
+      <strong>Имейл:</strong>
+      <%= company.email %>
+    </p>
 
-  <p>
-    <strong>Адрес:</strong>
-    <%= company.address %>
-  </p>
+    <p class="card-text">
+      <strong>Адрес:</strong>
+      <%= company.address %>
+    </p>
 
+  </div>
 </div>
