@@ -1,92 +1,106 @@
 <div id="<%= dom_id crane %>">
-  <p>
-    <strong>Статус:</strong>
-    <%= crane.status %>
-  </p>
+<div class="container border">
+  <style>
+      .row > div {
+        border-right: 1px solid #dee2e6;
+        padding-right: 15px;
+        margin-bottom: 0;
+      }
 
-  <p>
-    <strong>Тип:</strong>
-    <%= crane.crane_type %>
-  </p>
+      /* Remove the border on the last column */
+      .row > div:last-child {
+        border-right: none;
+        padding-right: 0;
+        margin-bottom: 0;
+      }
+    </style>
+  <div class="row mb-3; border-bottom">
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Статус:</strong></p><p class="text-muted"><%= crane.status %></p>
+    </div>
 
-  <p>
-    <strong>Товароподемност:</strong>
-    <%= crane.load_capacity %>
-  </p>
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Тип:</strong></p><p class="text-muted"><%= crane.crane_type %></p>
+    </div>
 
-  <p>
-    <strong>Година на производство:</strong>
-    <%= crane.year_of_manufacture %>
-  </p>
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Товароподемност:</strong></p><p class="text-muted"><%= crane.load_capacity %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Номер на заявление:</strong>
-    <%= crane.application_number %>
-  </p>
+  <div class="row mb-3; border-bottom">
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Година на производство:</strong></p><p class="text-muted"><%= crane.year_of_manufacture %></p>
+    </div>
 
-  <p>
-    <strong>Дата на заявление:</strong>
-    <%= crane.application_date %>
-  </p>
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Номер на заявление:</strong></p><p class="text-muted"><%= crane.application_number %></p>
+    </div>
 
-  <p>
-    <strong>Дата на регистрация:</strong>
-    <%= crane.registration_date %>
-  </p>
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Дата на заявление:</strong></p><p class="text-muted"><%= crane.application_date %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Дата на последна проверка:</strong>
-    <%= crane.last_check_date %>
-  </p>
+  <div class="row mb-3; border-bottom">
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Дата на регистрация:</strong></p><p class="text-muted"><%= crane.registration_date %></p>
+    </div>
 
-  <p>
-    <strong>Дата на следваща проверка:</strong>
-    <%= crane.next_check_date %>
-  </p>
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Дата на последна проверка:</strong></p><p class="text-muted"><%= crane.last_check_date %></p>
+    </div>
 
-  <p>
-    <strong>Дата на спиране:</strong>
-    <%= crane.suspension_date %>
-  </p>
+    <div class="col-sm-4">
+      <p class="mb-1"><strong>Дата на следваща проверка:</strong></p><p class="text-muted"><%= crane.next_check_date %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Дата на бракуване:</strong>
-    <%= crane.scrap_date %>
-  </p>
+  <div class="row mb-2; border-bottom">
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Дата на спиране:</strong></p><p class="text-muted"><%= crane.suspension_date %></p>
+    </div>
 
-  <p>
-    <strong>Ползвател:</strong>
-    <%= crane.user %>
-  </p>
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Дата на бракуване:</strong></p><p class="text-muted"><%= crane.scrap_date %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Адрес на ползвателя:</strong>
-    <%= crane.user_address %>
-  </p>
+  <div class="row mb-2; border-bottom">
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Ползвател:</strong></p><p class="text-muted"><%= crane.user %></p>
+    </div>
 
-  <p>
-    <strong>Производител:</strong>
-    <%= crane.manufacturer %>
-  </p>
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Адрес на ползвателя:</strong></p><p class="text-muted"><%= crane.user_address %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Местонахождение:</strong>
-    <%= crane.location %>
-  </p>
+  <div class="row mb-2; border-bottom">
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Производител:</strong></p><p class="text-muted"><%= crane.manufacturer %></p>
+    </div>
 
-  <p>
-    <strong>Заводски номер:</strong>
-    <%= crane.serial_number %>
-  </p>
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Местонахождение:</strong></p><p class="text-muted"><%= crane.location %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Регистрационен номер на крана:</strong>
-    <%= crane.registration_number %>
-  </p>
+  <div class="row mb-2; border-bottom">
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Заводски номер:</strong></p><p class="text-muted"><%= crane.serial_number %></p>
+    </div>
 
-  <p>
-    <strong>Забележки:</strong>
-    <%= simple_format(crane.notes) %>
-  </p>
+    <div class="col-sm-6">
+      <p class="mb-1"><strong>Регистрационен номер:</strong></p><p class="text-muted"><%= crane.registration_number %></p>
+    </div>
+  </div>
 
+  <div class="row mb-1; border-bottom">
+    <div class="col-sm-12">
+      <p class="mb-1"><strong>Забележки:</strong></p><p class="text-muted"><%= simple_format(crane.notes) %></p>
+    </div>
+  </div>
 </div>
+
+<br>

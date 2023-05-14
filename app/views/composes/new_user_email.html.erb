@@ -1,4 +1,7 @@
-<h1>Напишете имейл</h1>
+<h1>Изпрати имейл</h1>
+<br>
+
+<h4>Имейлът ще бъде изпратен до <%= @company_email %></h4>
 
 <% unless flash[:alert].nil? %>
     <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
@@ -6,18 +9,17 @@
 
 </br>
 <div>
-    Това са крановете с предстояща проверка за орган за технически надзор <%= Current.user[:name] %>
+    Това са крановете с предстояща проверка за орган за технически надзор <%= Current.user[:name] %>:
 </div>
 </br>
 
-<table>
-  <thead>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
     <tr>
       <th>Статус</th>
       <th>Регистрационен номер</th>
       <th>Дата на последна проверка</th>
       <th>Дата на следваща проверка</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -48,10 +50,7 @@
 </br>
 
 <%= form_with url: compose_user_path do |form| %>
-    <div class='mb-3'>
-        <%= form.label 'Въведете мейл' %>
-        <%= form.text_field :email, class: 'form-control', placeholder: 'ivan.ivanov@gmail.com'%>
-    </div>
+    <%= form.hidden_field :company_email, value: @company_email %>
     <div class='mb-3'>
         <%= form.submit 'Изпратете имейл', class: 'btn btn-primary' %>
     </div>

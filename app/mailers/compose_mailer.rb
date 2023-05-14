@@ -2,8 +2,8 @@ class ComposeMailer < ApplicationMailer
 
   def compose_user(email:, message:)
     set_smtp_settings
-
-    mail from: ActionMailer::Base.smtp_settings[:user_name], to: email, subject:'Предстояща проверка' do |format|
+    
+    mail from: ActionMailer::Base.smtp_settings[:user_name], to: email, subject:'Предстояща проверка на повдигателни съоръжения' do |format|
       format.text { render plain: message }
     end
   end

@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<br>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
 
 <%= render @crane %>
 
-<div>
-  <%= link_to "Промяна", edit_crane_path(@crane) %> |
-  <%= link_to "Обратно към повдигателните съоръжения", cranes_path %>
-
-  <%= button_to "Премахване", @crane, method: :delete %>
-</div>
+<table>
+  <tr>
+    <td><%= link_to "Промяна", edit_crane_path(@crane), class: "btn btn-dark" %></td>
+    <td><%= link_to "Обратно към повдигателните съоръжения", cranes_path, class: "btn btn-dark" %></td>
+    <td><%= button_to "Премахване", @crane, method: :delete, class: "btn btn-dark" %></td>
+  </tr>
+</table>

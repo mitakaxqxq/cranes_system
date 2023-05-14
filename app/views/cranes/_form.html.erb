@@ -23,92 +23,92 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Статус", style: "display: block" %>
-    <%= form.select :status, options_for_select(["Регистриран", "В експлоатация", "Спрян от експлоатация", "Бракуван"], form.object.status), { class: 'form-control' }, id: 'status'  %>
+    <%= form.select :status, options_for_select(["Регистриран", "В експлоатация", "Спрян от експлоатация", "Бракуван"], form.object.status), {}, class: "form-control custom-select", id: 'status' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Тип", style: "display: block" %>
-    <%= form.select :crane_type, options_for_select(["Бордови кран", "Кран с ръчно задвижване", "Кран мостов", "Кран козлови", "Товароподемна количка", "Електрически телфер", "Товарозахващащо приспособление", "Подвижна работна площадка", "Подемник", "Окачен кош"], form.object.crane_type), { class: 'form-control' }, id: 'type' %>
+    <%= form.select :crane_type, options_for_select(["Бордови кран", "Кран с ръчно задвижване", "Кран мостов", "Кран козлови", "Товароподемна количка", "Електрически телфер", "Товарозахващащо приспособление", "Подвижна работна площадка", "Подемник", "Окачен кош"], form.object.crane_type), {}, class: "form-control custom-select", id: 'type' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Товароподемност", style: "display: block" %>
-    <%= form.number_field :load_capacity, no_spinner: false, id: 'load_capacity', step: :any %>
+    <%= form.number_field :load_capacity, no_spinner: false, id: 'load_capacity', step: :any, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Година на производство", style: "display: block" %>
-    <%= form.number_field :year_of_manufacture, no_spinner: true, id: 'year_of_manufacture' %>
+    <%= form.number_field :year_of_manufacture, no_spinner: true, id: 'year_of_manufacture', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Номер на заявление", style: "display: block" %>
-    <%= form.number_field :application_number, no_spinner: true, id: 'application_number' %>
+    <%= form.number_field :application_number, no_spinner: true, id: 'application_number', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Дата на заявление", style: "display: block" %>
-    <%= form.date_field :application_date, id: 'application_date' %>
+    <%= form.date_field :application_date, id: 'application_date', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Дата на регистрация", style: "display: block" %>
-    <%= form.date_field :registration_date, id: 'registration_date' %>
+    <%= form.date_field :registration_date, id: 'registration_date', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Дата на последна проверка", style: "display: block" %>
-    <%= form.date_field :last_check_date, id: 'last_check_date' %>
+    <%= form.date_field :last_check_date, id: 'last_check_date', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Дата на следваща проверка", style: "display: block" %>
-    <%= form.date_field :next_check_date, id: 'next_check_date', readonly: true %>
+    <%= form.date_field :next_check_date, id: 'next_check_date', readonly: true, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Дата на спиране", style: "display: block" %>
-    <%= form.date_field :suspension_date, id: 'suspension_date' %>
+    <%= form.date_field :suspension_date, id: 'suspension_date', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Дата на бракуване", style: "display: block" %>
-    <%= form.date_field :scrap_date, id: 'scrap_date' %>
+    <%= form.date_field :scrap_date, id: 'scrap_date', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Ползвател", style: "display: block" %>
-    <%= form.text_field :user, id: 'user' %>
+    <%= form.text_field :user, id: 'user', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Адрес на ползвателя", style: "display: block" %>
-    <%= form.text_field :user_address, id: 'user_address' %>
+    <%= form.text_field :user_address, id: 'user_address', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Производител", style: "display: block" %>
-    <%= form.text_field :manufacturer, id: 'manufacturer' %>
+    <%= form.text_field :manufacturer, id: 'manufacturer', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Местонахождение", style: "display: block" %>
-    <%= form.text_field :location, id: 'location' %>
+    <%= form.text_field :location, id: 'location', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Заводски номер", style: "display: block" %>
-    <%= form.text_field :serial_number, id: 'serial_number' %>
+    <%= form.text_field :serial_number, id: 'serial_number', class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label "Регистрационен номер на крана", style: "display: block" %>
     <% if crane.new_record? %>
       <%= form.text_field :registration_number, value: Current.user[:company_number].to_s + 'ПС', id: 'registration_number'%>
     <% else %>
-      <%= form.text_field :registration_number, id: 'registration_number', disabled: true %>
+      <%= form.text_field :registration_number, id: 'registration_number', disabled: true, class: 'form-control' %>
     <% end %>
   </div>
 
@@ -119,11 +119,11 @@
 
   <% if crane.new_record? %>
     <div>
-      <%= form.submit 'Създай' %>
+      <%= form.submit 'Добави', class: "btn btn-dark" %>
     </div>
   <% else %>
     <div>
-      <%= form.submit 'Промяна' %>
+      <%= form.submit 'Промяна', class: "btn btn-dark" %>
     </div>
   <% end %>
 <% end %>

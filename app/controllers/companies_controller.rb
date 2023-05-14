@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
 
   def view_contractor_cranes
     @user = User.find_by(company_number: params[:contractor_number])
-    @cranes = Crane.where("contractor_number = :number", number: params[:contractor_number].to_i)
+    @cranes = Crane.where("contractor_number = :number AND user = :user", number: params[:contractor_number].to_i, user: Current.user[:name])
     log_company_view_contractor_cranes(params[:contractor_number])
   end
 

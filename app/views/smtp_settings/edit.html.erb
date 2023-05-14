@@ -1,11 +1,12 @@
-<h1>Настройки на SMTP </h1>
+<h1>Настройка на SMTP</h1>
 
 <%= form_with(model: @smtp_settings, url: smtp_setting_path(Current.user), method: :patch) do |f| %>
   <div>
-    <%= f.label 'Парола' %>
-    <%= f.password_field :password %>
+    <%= f.label 'Въведете парола:' %>
+    <%= f.password_field :password, class: 'form-control' %>
   </div>
+  <br>
   <div>
-    <%= f.submit 'Запази' %>
+    <%= f.submit 'Запази', class: "btn btn-dark" %>
   </div>
 <% end %>

@@ -8,6 +8,16 @@ class RegistrationsController < ApplicationController
 
     def create_user
         @user = User.new(user_params)
+        email_regex = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+        
+        if @user[:name].nil? || @user[:email].nil? || @user[:password_digest].nil? || @user[:company_number].nil?
+            redirect_to user_sign_up_path, :flash => { :alert => 'Всички полета са задължителни! Моля, въведете пълната информация!' }
+            return
+        end
+        unless @user[:email].match?(email_regex)
+            redirect_to user_sign_up_path, :flash => { :alert => 'Имейлът не е в правилен формат!' }
+            return
+        end
         if user_with_email_exists?(@user)
             redirect_to user_sign_up_path, :flash => { :alert => 'Вече съществува орган за технически надзор с този имейл!' }
             return
@@ -16,11 +26,12 @@ class RegistrationsController < ApplicationController
             redirect_to user_sign_up_path, :flash => { :alert => 'Вече съществува орган за технически надзор с този номер на компанията!' }
             return
         end
+
         if @user.save
             session[:user_id] = @user.id
             redirect_to root_path, :flash => { :notice => 'Успешна регистрация!' }
         else
-            render :new
+            puts @user.errors.full_messages.join(", ")
         end
     end
 
@@ -30,6 +41,20 @@ class RegistrationsController < ApplicationController
 
     def create_company
         @company = Company.new(company_params)
+        email_regex = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+        
+        if @company[:name].nil? || @company[:email].nil? || @company[:password_digest].nil? || @company[:uic].nil?
+            redirect_to company_sign_up_path, :flash => { :alert => 'Всички полета са задължителни! Моля, въведете пълната информация!' }
+            return
+        end
+        unless @company[:email].match?(email_regex)
+            redirect_to company_sign_up_path, :flash => { :alert => 'Имейлът не е в правилен формат!' }
+            return
+        end
+        unless @company[:uic].is_a?(Integer) && @company[:uic].respond_to?(:to_s) && @company[:uic].to_s.length == 9
+            redirect_to company_sign_up_path, :flash => { :alert => 'ЕИК трябва да е цяло число с 9 цифри!' }
+            return
+        end
         if company_with_email_exists?(@company)
             redirect_to company_sign_up_path, :flash => { :alert => 'Вече съществува компания с този имейл!' }
             return
@@ -38,11 +63,12 @@ class RegistrationsController < ApplicationController
             redirect_to company_sign_up_path, :flash => { :alert => 'Вече съществува компания с този ЕИК!' }
             return
         end
+
         if @company.save
             session[:company_id] = @company.id
             redirect_to root_path, :flash => { :notice => 'Успешна регистрация!' }
         else
-            render :new
+            puts @company.errors.full_messages.join(", ")
         end
     end
 

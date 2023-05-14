@@ -50,13 +50,6 @@ class CranesController < ApplicationController
 
   # PATCH/PUT /cranes/1 or /cranes/1.json
   def update
-    crane = Crane.find_by(registration_number: crane_params[:registration_number])
-    if crane
-      redirect_to edit_crane_path, alert: "Вече съществува повдигателно съоръжение с този регистрационен номер!"
-      log_user_action(Current.user, 'updated asset exists', "User #{Current.user[:name]} tried to update crane with existing registration number #{crane[:registration_number]}")
-      return
-    end
-
     respond_to do |format|
       if @crane.update(crane_params)
         format.html { redirect_to crane_url(@crane), notice: "Успешна промяна на повдигателно съоръжение!" }

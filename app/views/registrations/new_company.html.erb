@@ -8,7 +8,6 @@
   <div class="alert alert-success"><%= flash[:notice] %></div>
 <% end %>
 
-
 <%= form_with model: @company, url: company_sign_up_path do |form| %>
     <% if form.object.errors.any? %>
         <div class='alert alert-danger'>
@@ -23,23 +22,23 @@
     </div>
     <div class='mb-3'>
         <%= form.label 'Парола' %>
-        <%= form.password_field :password, class: 'form-control', placeholder: 'парола' %>
+        <%= form.password_field :password, class: 'form-control' %>
     </div>  
     <div class='mb-3'>
         <%= form.label 'Потвърдете паролата' %>
-        <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'парола' %>
+        <%= form.password_field :password_confirmation, class: 'form-control' %>
     </div>
     <div class='mb-3'>
         <%= form.label 'Име' %>
-        <%= form.text_field :name, class: 'form-control', placeholder: '123' %>
+        <%= form.text_field :name, class: 'form-control', placeholder: '' %>
     </div>
     <div class='mb-3'>
         <%= form.label 'ЕИК' %>
-        <%= form.text_field :uic, class: 'form-control', placeholder: '123' %>
+        <%= form.text_field :uic, class: 'form-control', placeholder: '000000000' %>
     </div>
     <div class='mb-3'>
         <%= form.label 'Адрес' %>
-        <%= form.text_field :address, class: 'form-control', placeholder: '123' %>
+        <%= form.text_field :address, class: 'form-control', placeholder: 'гр. София, ул. Стара планина 12' %>
     </div>
     <div class='mb-3'>
         <%= form.submit 'Създай фирма', class: 'btn btn-primary' %>
