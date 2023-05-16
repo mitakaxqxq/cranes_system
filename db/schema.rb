@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_180000) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_181000) do
   create_table "companies", force: :cascade do |t|
     t.string "email", null: false
-    t.string "name"
+    t.string "name", null: false
     t.string "password_digest"
-    t.integer "uic"
-    t.string "address"
+    t.integer "uic", null: false
+    t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
