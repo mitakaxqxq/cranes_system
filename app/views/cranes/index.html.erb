@@ -27,7 +27,7 @@
         <td><%= crane.status %></td>
         <td><%= crane.next_check_date %></td>
         <td><%= link_to 'Покажи', crane, style: 'text-decoration: none' %></td> 
-        <td><%= link_to 'Промени', edit_crane_path(crane), style: 'text-decoration: none' %></td> 
+        <td><%= link_to 'Редактирай', edit_crane_path(crane), style: 'text-decoration: none' %></td> 
         <td><%= button_to 'Изтрий', crane, method: :delete, data: { confirm: 'Сигурни ли сте?' }, style: 'text-decoration: none; background:none; border:none; color:#0d6efd' %></td> 
       </tr>
     <% end %>

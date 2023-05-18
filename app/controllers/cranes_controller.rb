@@ -52,7 +52,7 @@ class CranesController < ApplicationController
   def update
     respond_to do |format|
       if @crane.update(crane_params)
-        format.html { redirect_to crane_url(@crane), notice: "Успешна промяна на повдигателно съоръжение!" }
+        format.html { redirect_to crane_url(@crane), notice: "Успешно редактиране на повдигателно съоръжение!" }
         format.json { render :show, status: :ok, location: @crane }
         log_user_action(Current.user, 'update asset', "User #{Current.user[:name]} updated crane with registration number #{@crane[:registration_number]}")
       else
