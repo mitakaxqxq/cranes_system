@@ -61,15 +61,23 @@ $(document).ready(function() {
     if(age > 10)
     {
       lastCheckDateValue.setFullYear(lastCheckDateValue.getFullYear() + 1);
-      lastCheckDateValue.setMonth(lastCheckDateValue.getMonth() + 1, 0);
-      var dateString = lastCheckDateValue.toISOString().substr(0, 10);
+      lastCheckDateValue.setMonth(lastCheckDateValue.getMonth() + 1, 1);
+      lastCheckDateValue.setDate(0);
+      var year = lastCheckDateValue.getFullYear();
+      var month = lastCheckDateValue.getMonth() + 1;
+      var day = lastCheckDateValue.getDate();
+      var dateString = year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
       $nextCheckDateField.val(dateString);
     }
     else
     {
       lastCheckDateValue.setFullYear(lastCheckDateValue.getFullYear() + 2);
-      lastCheckDateValue.setMonth(lastCheckDateValue.getMonth() + 1, 0);
-      var dateString = lastCheckDateValue.toISOString().substr(0, 10);
+      lastCheckDateValue.setMonth(lastCheckDateValue.getMonth() + 1, 1);
+      lastCheckDateValue.setDate(0);
+      var year = lastCheckDateValue.getFullYear();
+      var month = lastCheckDateValue.getMonth() + 1;
+      var day = lastCheckDateValue.getDate();
+      var dateString = year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
       $nextCheckDateField.val(dateString);
     }
     
