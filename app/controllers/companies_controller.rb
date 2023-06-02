@@ -60,7 +60,7 @@ class CompaniesController < ApplicationController
   end
 
   def set_contractors
-    @contractors = Current.user.company_contractors.map(&:user)
+    @contractors = Current.user.contractors
   end
 
   def log_company_view_contractors

@@ -18,7 +18,7 @@ class SmtpSettingsController < ApplicationController
     end
 
     def update
-        @smtp_settings = Current.user.smtp_settings || Current.user.build_smtp_settings
+        @smtp_settings = Current.user.smtp_settings
         if @smtp_settings.update(smtp_settings_params)
             log_smtp_settings_successfully_changed
             redirect_to root_path, notice: 'SMTP настройките бяха ъпдейтнати успешно.'

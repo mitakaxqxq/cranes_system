@@ -39,6 +39,7 @@ $(document).ready(function() {
     {
       $scrapDateField.val(dateString);
       disableFields(formFields);
+      $suspensionDateField.val(null);
        
     }
     else
@@ -48,6 +49,7 @@ $(document).ready(function() {
       {
         $suspensionDateField.val(dateString);
         $suspensionDateField.prop('disabled', true);
+        $scrapDateField.val(null);
       } 
     }  
   });

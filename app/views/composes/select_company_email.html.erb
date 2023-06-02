@@ -3,7 +3,7 @@
 <%= form_with url: compose_user_path, method: 'get' do |form| %>
     <div class='mb-3'>
       <%= form.label 'Изберете ползвател: ' %>
-      <%= form.collection_select :email, @company_emails, :email, :email, prompt: true, class: 'form-control' %>
+      <%= form.select(:email, options_for_select(@company_emails), {}, class: 'form-control') %>
     </div>
     <div class='mb-3'>
         <%= form.submit 'Избери', class: 'btn btn-primary' %>

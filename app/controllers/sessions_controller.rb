@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
             log_company_action(company, "logged in", "Company with email #{params[:email]} logged in")
             redirect_to root_path, :flash => { :notice => 'Успешен вход!' }
         else
+            log_company_action(nil, "login attempt fail", "Someone tried to login with email #{params[:email]}")
             redirect_to sign_in_path, :flash => { :alert => 'Невалиден имейл или парола!' }
         end
     end

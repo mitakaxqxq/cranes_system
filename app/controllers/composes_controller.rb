@@ -1,6 +1,6 @@
 class ComposesController < ApplicationController
     def select_company_email
-        @company_emails = Current.user.company_contractors.joins(:company).select('companies.email, company_contractors.company_id')
+        @company_emails = Current.user.company_users.pluck(:email)
     end
 
     def new_user_email

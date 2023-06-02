@@ -70,12 +70,12 @@
 
   <div class="form-group">
     <%= form.label "Дата на спиране", style: "display: block" %>
-    <%= form.date_field :suspension_date, id: 'suspension_date', class: 'form-control' %>
+    <%= form.date_field :suspension_date, id: 'suspension_date', readonly: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label "Дата на бракуване", style: "display: block" %>
-    <%= form.date_field :scrap_date, id: 'scrap_date', class: 'form-control' %>
+    <%= form.date_field :scrap_date, id: 'scrap_date', readonly: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
