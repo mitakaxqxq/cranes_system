@@ -17,10 +17,10 @@
   <tbody>
     <% @company_contractors.each do |company_contractor| %>
       <tr>
-        <td><%= company_contractor.company.name %></td>
-        <td><%= company_contractor.company.uic %></td>
-        <td><%= company_contractor.company.address %></td>
-        <td><%= company_contractor.company.email %></td>
+        <td><%= company_contractor.name %></td>
+        <td><%= company_contractor.uic %></td>
+        <td><%= company_contractor.address %></td>
+        <td><%= company_contractor.email %></td>
       </tr>
     <% end %>
   </tbody>
