@@ -29,8 +29,10 @@ class RegistrationsController < ApplicationController
 
         if @user.save
             session[:user_id] = @user.id
+            log_company_action(@user, "successful registration", "User with email #{@user[:email]} registered")
             redirect_to root_path, :flash => { :notice => 'Успешна регистрация!' }
         else
+            log_company_action(@user, "unsuccessful registration", "User with email #{@user[:email]} tried to register but failed")
             puts @user.errors.full_messages.join(", ")
         end
     end
@@ -66,8 +68,10 @@ class RegistrationsController < ApplicationController
 
         if @company.save
             session[:company_id] = @company.id
+            log_company_action(@company, "successful registration", "Company with email #{@company[:email]} registered")
             redirect_to root_path, :flash => { :notice => 'Успешна регистрация!' }
         else
+            log_company_action(@company, "unsuccessful registration", "Company with email #{@company[:email]} tried to register but failed")
             puts @company.errors.full_messages.join(", ")
         end
     end
